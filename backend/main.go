@@ -1,11 +1,11 @@
 package main
 
 import (
+	"fmt"
 	"encoding/json"
 	"log"
 	"net/http"
 	"os/exec"
-	"runtime"
 	"time"
 
 	"github.com/shirou/gopsutil/v3/cpu"

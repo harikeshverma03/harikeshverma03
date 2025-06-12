@@ -1,13 +1,32 @@
+// frontend/app/page.tsx
+
+import Image from 'next/image'
+import Link from 'next/link'
+
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-purple-600 to-blue-400 text-white flex flex-col items-center justify-center">
-      <h1 className="text-5xl font-bold mb-6">Harikesh Verma</h1>
-      <p className="text-xl mb-8">Welcome to my personal website</p>
-      <div className="flex gap-4">
-        <a href="/metrics" className="bg-white text-black px-4 py-2 rounded">Metrics</a>
-        <a href="/publications" className="bg-white text-black px-4 py-2 rounded">Publications</a>
-        <a href="/projects" className="bg-white text-black px-4 py-2 rounded">Projects</a>
+    <div className="flex flex-col items-center justify-center min-h-screen space-y-6">
+      <Image
+        src="/profile.jpg"
+        alt="Harikesh Verma"
+        width={200}
+        height={200}
+        className="rounded-full shadow-lg"
+      />
+      <h1 className="text-4xl font-bold">Harikesh Verma</h1>
+      <p className="text-lg text-gray-300">Engineer | Researcher | Raspberry Pi Enthusiast</p>
+
+      <div className="flex space-x-6">
+        <Link href="https://www.linkedin.com/in/harikeshverma03" target="_blank">
+          <button className="bg-blue-600 px-4 py-2 rounded hover:bg-blue-700 transition">LinkedIn</button>
+        </Link>
+        <Link href="mailto:harikeshverma03@gmail.com">
+          <button className="bg-green-600 px-4 py-2 rounded hover:bg-green-700 transition">Email</button>
+        </Link>
+        <Link href="https://nas.harikeshverma03.com" target="_blank">
+          <button className="bg-yellow-600 px-4 py-2 rounded hover:bg-yellow-700 transition">NAS Login</button>
+        </Link>
       </div>
-    </main>
-  );
+    </div>
+  )
 }

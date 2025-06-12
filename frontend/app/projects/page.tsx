@@ -1,8 +1,11 @@
-export default function ProjectsPage() {
+// frontend/app/projects/page.tsx
+
+export default function Projects() {
     return (
-      <main className="p-8">
-        <h1 className="text-3xl font-bold mb-4">ProjectsPage</h1>
-        <p>ProjectsPage will be listed here.</p>
-      </main>
-    );
+      <div className="p-4">
+        <h1 className="text-3xl font-bold mb-4">Projects</h1>
+        <p>Coming soon...</p>
+      </div>
+    )
   }
+  
