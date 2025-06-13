@@ -3,7 +3,7 @@ name: Deploy to Raspberry Pi (Cloudflare Zero Trust)
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy:
