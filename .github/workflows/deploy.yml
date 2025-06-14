@@ -30,7 +30,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./backend
-          platforms: linux/arm/v7
+          platforms: linux/arm64
           push: true
           tags: ghcr.io/harikeshverma03/portfolio-backend:latest
 
@@ -38,6 +38,6 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./frontend
-          platforms: linux/arm/v7
+          platforms: linux/arm64
           push: true
           tags: ghcr.io/harikeshverma03/portfolio-frontend:latest
