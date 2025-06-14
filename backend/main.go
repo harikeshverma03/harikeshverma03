@@ -39,14 +39,18 @@ func getTemperature() float64 {
     if err != nil {
         return 0.0
     }
+
     tempStr := strings.TrimPrefix(string(out), "temp=")
-    tempStr = strings.TrimSuffix(tempStr, "'C\n")
+    tempStr = strings.TrimSuffix(tempStr, "'C")
+
     temp, err := strconv.ParseFloat(tempStr, 64)
     if err != nil {
         return 0.0
     }
+
     return temp
 }
+
 
 func getActiveTCP() int {
     connections, err := net.Connections("tcp")
