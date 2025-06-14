@@ -23,7 +23,7 @@ export default function HomePage() {
 
         <div className="flex flex-wrap justify-center gap-4">
           <ContactButton href="mailto:harikeshverma03@gmail.com" label="Email" />
-          <ContactButton href="https://www.linkedin.com/in/harikesh-verma-308505156/" label="LinkedIn" />
+          <ContactButton href="https://www.linkedin.com/in/harikeshverma03" label="LinkedIn" />
         </div>
       </div>
     </main>
