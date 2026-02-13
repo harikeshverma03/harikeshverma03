@@ -35,21 +35,24 @@ type Metrics struct {
 }
 
 func getTemperature() float64 {
-    out, err := exec.Command("vcgencmd", "measure_temp").Output()
-    if err != nil {
-        return 0.0
-    }
-
+  // Try vcgencmd first
+  if out, err := exec.Command("vcgencmd", "measure_temp").Output(); err == nil {
     tempStr := strings.TrimPrefix(string(out), "temp=")
     tempStr = strings.TrimSuffix(tempStr, "'C\n")
-
-    temp, err := strconv.ParseFloat(tempStr, 64)
-    if err != nil {
-        return 0.0
+    if temp, err := strconv.ParseFloat(tempStr, 64); err == nil {
+      return temp
     }
-
-    return temp
-}
+  }
+  // Fallback to sysfs (millidegrees)
+  data, err := os.ReadFile("/sys/class/thermal/thermal_zone0/temp")
+  if err != nil {
+    return 0.0
+  }
+  s := strings.TrimSpace(string(data))
+  v, err := strconv.ParseFloat(s, 64)
+  if err != nil {
+    return 0.0
+  }
 
 
 func getActiveTCP() int {

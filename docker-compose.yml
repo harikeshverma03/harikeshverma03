@@ -11,6 +11,7 @@ services:
       - '/dev/vchiq:/dev/vchiq'
     volumes:
       - '/opt/vc:/opt/vc:ro'
+      - '/sys/class/thermal/thermal_zone0/temp:/sys/class/thermal/thermal_zone0/temp:ro'
     privileged: true
 
   frontend:
