@@ -41,7 +41,7 @@ func getTemperature() float64 {
     }
 
     tempStr := strings.TrimPrefix(string(out), "temp=")
-    tempStr = strings.TrimSuffix(tempStr, "'C")
+    tempStr = strings.TrimSuffix(tempStr, "'C\n")
 
     temp, err := strconv.ParseFloat(tempStr, 64)
     if err != nil {
