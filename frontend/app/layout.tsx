@@ -20,6 +20,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/metrics">Metrics</Link>
             <Link href="/projects">Projects</Link>
             <Link href="/services">Services</Link>
+            <a href="https://github.com/harikeshverma03/" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/harikeshverma03/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </div>
         </nav>
         <main className="p-6">{children}</main>
