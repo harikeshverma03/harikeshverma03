@@ -1,6 +1,8 @@
 package main
 
 import (
+    "fmt"
+    "os"
     "encoding/json"
     "log"
     "net/http"
@@ -35,24 +37,28 @@ type Metrics struct {
 }
 
 func getTemperature() float64 {
-  // Try vcgencmd first
-  if out, err := exec.Command("vcgencmd", "measure_temp").Output(); err == nil {
-    tempStr := strings.TrimPrefix(string(out), "temp=")
-    tempStr = strings.TrimSuffix(tempStr, "'C\n")
-    if temp, err := strconv.ParseFloat(tempStr, 64); err == nil {
-      return temp
-    }
-  }
-  // Fallback to sysfs (millidegrees)
-  data, err := os.ReadFile("/sys/class/thermal/thermal_zone0/temp")
-  if err != nil {
-    return 0.0
-  }
-  s := strings.TrimSpace(string(data))
-  v, err := strconv.ParseFloat(s, 64)
-  if err != nil {
-    return 0.0
-  }
+	// Try vcgencmd first
+	if out, err := exec.Command("vcgencmd", "measure_temp").Output(); err == nil {
+		var temp float64
+		// Expected: temp=48.5'C
+		if _, err := fmt.Sscanf(string(out), "temp=%f'C", &temp); err == nil {
+			return temp
+		}
+	}
+
+	// Fallback to sysfs (millidegrees)
+	data, err := os.ReadFile("/sys/class/thermal/thermal_zone0/temp")
+	if err != nil {
+		return 0
+	}
+
+	v, err := strconv.ParseFloat(strings.TrimSpace(string(data)), 64)
+	if err != nil {
+		return 0
+	}
+
+	return v / 1000.0
+}
 
 
 func getActiveTCP() int {
