@@ -12,10 +12,10 @@ echo "🔧 Enabling Docker Buildx (cross-build for Raspberry Pi)..."
 docker buildx create --use --name harikesh-builder || docker buildx use harikesh-builder
 
 echo "📦 Building and pushing backend image..."
-docker buildx build --platform linux/arm64 -t $BACKEND_IMAGE $BACKEND_PATH --push
+docker buildx build --platform linux/amd64 -t $BACKEND_IMAGE $BACKEND_PATH --push
 
 echo "📦 Building and pushing frontend image..."
-docker buildx build --platform linux/arm64 -t $FRONTEND_IMAGE $FRONTEND_PATH --push
+docker buildx build --platform linux/amd64 -t $FRONTEND_IMAGE $FRONTEND_PATH --push
 
 echo "✅ Done. Images pushed to GitHub Container Registry:"
 echo "→ $BACKEND_IMAGE"
