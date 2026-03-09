@@ -41,3 +41,19 @@ jobs:
           platforms: linux/arm64
           push: true
           tags: ghcr.io/harikeshverma03/portfolio-frontend:latest
+          
+      - name: Build and push backend (linux)
+        uses: docker/build-push-action@v5
+        with:
+          context: ./backend
+          platforms: linux/amd64
+          push: true
+          tags: ghcr.io/harikeshverma03/portfolio-backend:latest
+
+      - name: Build and push frontend (linux)
+        uses: docker/build-push-action@v5
+        with:
+          context: ./frontend
+          platforms: linux/amd64
+          push: true
+          tags: ghcr.io/harikeshverma03/portfolio-frontend:latest
